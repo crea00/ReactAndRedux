@@ -20,7 +20,13 @@ class SearchBar extends Component {
   } 
 
   render() {
-    return <input onChange={event => console.log(event.target.value) } />;
+    // We always manipulate our state with this.Setstate 
+    // Basically whenever you want to update our component in some fashion, be thinking state
+    return (
+      <div>
+        <input onChange={event => this.setState({ term: event.target.value }) } />
+      </div>
+    );
   }
 }
 
