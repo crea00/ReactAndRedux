@@ -16,3 +16,13 @@ const App = () => {
 
 // Take this component's HTML generated HTML and put it on the page (in the DOM)
 ReactDOM.render(<App />, document.querySelector('.container'));
+
+/*
+  Class based Component vs Functional based Component
+  
+  - Class based Components are used whenever we have a component that needs to be aware of state in some fashion.
+    So, your data is changing over time, we're reacting to user events and we need to keep track of some aspect of state from render pass to render pass
+  - Functional based Components are used whenever we're just taking in some information and spitting out some JSX.
+    Also, very important to note a functional component can contain a class based component.
+
+*/
