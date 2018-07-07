@@ -14,20 +14,32 @@ class App extends Component{
   constructor(props) {
     super(props);
 
-    this.state = { videos: [] };
+    this.state = { 
+      videos: [],
+      selectedVideo: null
+    };
 
     YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
       // this.setState({ videos: videos });
-      this.setState({ videos });
+      this.setState({ 
+        videos,
+        selectedVideo: videos[0] 
+      });
     });
   }
 
+  // Callback is going to be a function that we're going to 
+  // pass from app to video-list and finally into video-list-item.
+  // Passing callback is a great way to do small communication
+  // between a parent component and a child component.
   render() {
     return(
       <div>
         <SearchBar />
-        <VideoDetail video={this.state.videos[0] } />
-        <VideoList videos={ this.state.videos }/>
+        <VideoDetail video={this.state.selectedVideo } />
+        <VideoList 
+          onVideoSelect={ selectedVideo => this.setState({ selectedVideo })}
+          videos={ this.state.videos }/>
       </div>
     );
   }
@@ -44,5 +56,4 @@ ReactDOM.render(<App />, document.querySelector('.container'));
     So, your data is changing over time, we're reacting to user events and we need to keep track of some aspect of state from render pass to render pass
   - Functional based Components are used whenever we're just taking in some information and spitting out some JSX.
     Also, very important to note a functional component can contain a class based component.
-
 */
