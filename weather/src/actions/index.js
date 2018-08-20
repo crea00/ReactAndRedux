@@ -9,7 +9,7 @@ export const FETCH_WETHER = 'FETCH_WETHER';
 // & an action is an object which always has to have a type.
 export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city},us`;
-  // This will return a promise right here
+  // Axios will return a promise right here, the promise doesn't actually contain any of our data
   const request = axios.get(url);
 
   return {
